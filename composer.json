@@ -1,0 +1,31 @@
+{
+  "name": "jdlabs/spaniel",
+  "description": "A Wordpress Plugin Helper",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "keywords": [
+    "wordpress",
+    "plugin"
+  ],
+  "authors": [
+    {
+      "name": "Javier De la Hoz",
+      "email": "javierdlahoz@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "composer/installers": "v1.7.0",
+    "guzzlehttp/guzzle": "^7.2",
+    "zeptech/annotations": "^1.1",
+    "haydenpierce/class-finder": "^0.4.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jdlabs\\Spaniel\\": "src/"
+    },
+    "files": [
+      "include/functions_include.php"
+    ]
+  }
+}
