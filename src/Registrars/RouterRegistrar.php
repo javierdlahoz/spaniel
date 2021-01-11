@@ -4,21 +4,27 @@ namespace Jdlabs\Spaniel\Registrars;
 
 
 use Jdlabs\Spaniel\Utils\Config;
-use zpt\anno\Annotations;
 
 class RouterRegistrar extends BaseRegistrar
 {
+
+    public static function purpose(): string
+    {
+        return 'route';
+    }
+
+    public static function namespace(): string
+    {
+        return 'Controllers';
+    }
+
     /**
      * @param string $root_namespace
-     * @throws \ReflectionException
-     * @throws \zpt\anno\ReflectorNotCommentedException
      * @throws \Exception
      */
-    public function registerRoutes(string $root_namespace): void
+    public function register(string $root_namespace): void
     {
-        foreach ($this->getClassesInNamespace($root_namespace, 'Controllers') as $controller) {
-            static::registerControllerRoutes($controller);
-        }
+        parent::register($root_namespace);
 
         $routes = Config::get('routes/web');
         foreach ($routes as $route_key => $route) {
@@ -36,29 +42,20 @@ class RouterRegistrar extends BaseRegistrar
         flush_rewrite_rules();
     }
 
-    /**
-     * @param string $class
-     * @throws \ReflectionException
-     * @throws \zpt\anno\ReflectorNotCommentedException
-     */
-    public static function registerControllerRoutes(string $class): void
+    public static function registerMethodPurpose(
+        \ReflectionClass $class,
+        \ReflectionMethod $method,
+        array $class_annotations,
+        array $method_annotations
+    )
     {
-        $reflector = new \ReflectionClass($class);
-        $controller_annotations = (new Annotations($reflector))->asArray();
-
-        if (count($controller_annotations) && $controller_annotations['route']) {
-            foreach ($reflector->getMethods() as $method) {
-                $method_annotations = (new Annotations($method))->asArray();
-
-                if (count($method_annotations) && $method_annotations['route']) {
-                    static::registerMethodRoute(
-                        $reflector->getName(),
-                        $method->getName(),
-                        $controller_annotations,
-                        $method_annotations
-                    );
-                }
-            }
+        if (count($method_annotations) && $method_annotations['route']) {
+            static::registerMethodRoute(
+                $class->getName(),
+                $method->getName(),
+                $class_annotations,
+                $method_annotations
+            );
         }
     }
 
@@ -75,8 +72,7 @@ class RouterRegistrar extends BaseRegistrar
         array $method_annotations
     ): void
     {
-        if ($controller_annotations['route']) {
-
+        if ($controller_annotations[static::purpose()]) {
             $route_callback = [
                 'methods' => $method_annotations['method'] ?? 'GET',
                 'callback' => [$controller::getInstance(), $method]

@@ -102,34 +102,34 @@ abstract class BasePlugin
     {
         return self::pluginDirBase() . '/../config/';
     }
-//
-//    /**
-//     * Creates an instance if one isn't already available,
-//     * then return the current instance.
-//     *
-//     * @param  string $file The file from which the class is being instantiated.
-//     * @return object       The class instance.
-//     */
-//    public static function getInstance($file)
-//    {
-//        if (!isset(self::$instance) && !(self::$instance instanceof self)) {
-//            self::$instance = new static();
-//
-//            if (! function_exists('get_plugin_data')) {
-//                include_once(ABSPATH . 'wp-admin/includes/plugin.php');
-//            }
-//
-//            $data = get_plugin_data($file);
-//
-//            self::$instance->name = $data['Name'];
-//            self::$instance->prefix = $data['Prefix'] ?? 'spaniel';
-//            self::$instance->version = $data['Version'];
-//            self::$instance->file = $file;
-//
-//            self::$instance->run();
-//        }
-//        return self::$instance;
-//    }
+
+    /**
+     * Creates an instance if one isn't already available,
+     * then return the current instance.
+     *
+     * @param  string $file The file from which the class is being instantiated.
+     * @return object       The class instance.
+     */
+    public static function getInstance($file)
+    {
+        if (!isset(self::$instance) && !(self::$instance instanceof self)) {
+            self::$instance = new static();
+
+            if (! function_exists('get_plugin_data')) {
+                include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+            }
+
+            $data = get_plugin_data($file);
+
+            self::$instance->name = $data['Name'];
+            self::$instance->prefix = $data['Prefix'] ?? 'spaniel';
+            self::$instance->version = $data['Version'];
+            self::$instance->file = $file;
+
+            self::$instance->run();
+        }
+        return self::$instance;
+    }
 
 
     /**
