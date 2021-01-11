@@ -1,7 +1,6 @@
 {
   "name": "jdlabs/spaniel",
   "description": "A Wordpress Plugin Helper",
-  "minimum-stability": "stable",
   "license": "MIT",
   "keywords": [
     "wordpress",
