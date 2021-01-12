@@ -19,9 +19,7 @@ abstract class BasePlugin
         InteractsWithPluginFiles,
         InteractsWithRegistrars;
 
-    /**
-     * @var BasePlugin
-     */
+    /** @var BasePlugin */
     protected static $instance;
 
     /** @var string  */
