@@ -4,7 +4,6 @@
 namespace Jdlabs\Spaniel\Utils;
 
 
-
 class Cache
 {
 

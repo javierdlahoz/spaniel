@@ -1,7 +1,6 @@
 {
   "name": "jdlabs/spaniel",
   "description": "A Wordpress Plugin Helper",
-  "license": "MIT",
   "keywords": [
     "wordpress",
     "plugin"
@@ -12,8 +11,9 @@
       "email": "javierdlahoz@gmail.com"
     }
   ],
+  "license": "MIT",
   "require": {
-    "php": "^7.4 || ^8.0"
+    "php": ">=7.4"
   },
   "require-dev": {
     "composer/installers": "v1.7.0",
@@ -28,5 +28,10 @@
     "files": [
       "include/functions_include.php"
     ]
-  }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
