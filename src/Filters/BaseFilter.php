@@ -3,7 +3,9 @@
 namespace Jdlabs\Spaniel\Filters;
 
 
-abstract class BaseFilter
+use Jdlabs\Spaniel\Utils\Singleton;
+
+abstract class BaseFilter extends Singleton
 {
 
     /**

@@ -2,20 +2,19 @@
 
 namespace Jdlabs\Spaniel\Registrars;
 
-
-class ActionRegistrar extends BaseRegistrar
+class FilterRegistrar extends BaseRegistrar
 {
-    const DEFAULT_ACTION_PRIORITY = 10;
+    const DEFAULT_FILTER_PRIORITY = 10;
     const DEFAULT_ACCEPTED_ARGUMENTS = 1;
 
     public static function scope(): string
     {
-        return 'action';
+        return 'filter';
     }
 
     public static function namespace(): string
     {
-        return 'Actions';
+        return 'Filters';
     }
 
     public static function registerMethodPurpose(
@@ -26,10 +25,10 @@ class ActionRegistrar extends BaseRegistrar
     )
     {
         if ($method_annotations['hook']) {
-            add_action(
+            add_filter(
                 $method_annotations['hook'],
                 static::getCallback($class, $method),
-                $method_annotations['priority'] ?? static::DEFAULT_ACTION_PRIORITY,
+                $method_annotations['priority'] ?? static::DEFAULT_FILTER_PRIORITY,
                 $method_annotations['accepted_args'] ?? static::DEFAULT_ACCEPTED_ARGUMENTS
             );
         }

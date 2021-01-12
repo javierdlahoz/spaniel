@@ -8,7 +8,7 @@ use Jdlabs\Spaniel\Utils\Config;
 class RouterRegistrar extends BaseRegistrar
 {
 
-    public static function purpose(): string
+    public static function scope(): string
     {
         return 'route';
     }
@@ -72,7 +72,7 @@ class RouterRegistrar extends BaseRegistrar
         array $method_annotations
     ): void
     {
-        if ($controller_annotations[static::purpose()]) {
+        if ($controller_annotations[static::scope()]) {
             $route_callback = [
                 'methods' => $method_annotations['method'] ?? 'GET',
                 'callback' => [$controller::getInstance(), $method]

@@ -14,7 +14,7 @@ use zpt\anno\Annotations;
 abstract class BaseRegistrar
 {
 
-    abstract public static function purpose(): string;
+    abstract public static function scope(): string;
 
     abstract public static function namespace(): string;
 
@@ -56,12 +56,22 @@ abstract class BaseRegistrar
         $reflector = new \ReflectionClass($class);
         $class_annotations = (new Annotations($reflector))->asArray();
 
-        if (count($class_annotations) && $class_annotations[static::purpose()]) {
+        if (count($class_annotations) && $class_annotations[static::scope()]) {
             foreach ($reflector->getMethods() as $method) {
                 $method_annotations = (new Annotations($method))->asArray();
                 static::registerMethodPurpose($reflector, $method, $class_annotations, $method_annotations);
             }
         }
+    }
+
+    /**
+     * @param \ReflectionClass $class
+     * @param \ReflectionMethod $method
+     * @return array
+     */
+    public static function getCallback(\ReflectionClass $class, \ReflectionMethod $method): array
+    {
+        return [$class->getName()::getInstance(), $method->getName()];
     }
 
 }

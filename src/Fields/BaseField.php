@@ -10,42 +10,42 @@ abstract class BaseField
     /**
      * @var string
      */
-    protected $id;
+    protected string $id;
 
     /**
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * @var string
      */
-    protected $title;
+    protected string $title;
 
     /**
      * @var string
      */
-    protected $options;
+    protected string $options;
 
     /**
      * @var string
      */
-    protected $type;
+    protected string $type;
 
     /**
      * @var bool
      */
-    protected $required;
+    protected bool $required;
 
     /**
      * @var string
      */
-    protected $options_group;
+    protected string $options_group;
 
     /**
      * @var string
      */
-    protected $classes = '';
+    protected string $classes = '';
 
     /**
      * Constructor.
@@ -82,9 +82,9 @@ abstract class BaseField
      */
     public function render()
     {
-        echo "<div class='bb-control'>
+        echo "<div>
         <input type='{$this->getType()}' 
-            class='bb-control-input {$this->getClasses()}'
+            class='{$this->getClasses()}'
             id='{$this->getOptionId()}'
             {$this->renderRequired()}
             {$this->renderValue()}
@@ -241,9 +241,9 @@ abstract class BaseField
 
     /**
      * @param string $classes
-     * @return void
+     * @return BaseField
      */
-    public function setClasses(string $classes)
+    public function setClasses(string $classes): BaseField
     {
         $this->classes = $classes;
         return $this;
