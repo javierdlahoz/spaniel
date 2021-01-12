@@ -1,6 +1,6 @@
 <?php
 
-namespace Jdlabs\Spaniel\Plugin;
+namespace Jdlabs\Spaniel;
 
 use Jdlabs\Spaniel\Traits\InteractsWithBlocks;
 use Jdlabs\Spaniel\Traits\InteractsWithFilters;
