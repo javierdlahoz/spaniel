@@ -7,15 +7,6 @@ namespace Jdlabs\Spaniel\Traits;
 trait InteractsWithBlocks
 {
     /**
-     * @param string $block_key
-     * @param array $block
-     */
-    public function registerBlock(string $block_key, array $block)
-    {
-        block_lab_add_block($block_key, $block);
-    }
-
-    /**
      * @param array $array
      * @param string $key
      * @return array|array[]

@@ -112,15 +112,4 @@ abstract class BasePlugin
         add_action('admin_enqueue_scripts', [get_called_class(), 'bootstrapAdmin'], 20, 1);
         add_action('wp_enqueue_scripts', [get_called_class(), 'bootstrapComponents']);
     }
-
-    /**
-     * Register edition blocks
-     */
-    public function registerBlocks()
-    {
-        $blocks = Config::get('blocks');
-        foreach ($blocks as $block_key => $block) {
-            $this->registerBlock($block_key, $block);
-        }
-    }
 }

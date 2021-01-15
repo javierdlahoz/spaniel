@@ -5,7 +5,7 @@ namespace Jdlabs\Spaniel\Registrars;
 
 use Jdlabs\Spaniel\Utils\Config;
 
-class RouterRegistrar extends BaseRegistrar
+class RouteRegistrar extends BaseRegistrar
 {
 
     public static function scope(): string
@@ -18,11 +18,7 @@ class RouterRegistrar extends BaseRegistrar
         return 'Controllers';
     }
 
-    /**
-     * @param string $root_namespace
-     * @throws \Exception
-     */
-    public function register(string $root_namespace): void
+    public function register(?string $root_namespace = null): void
     {
         parent::register($root_namespace);
 
@@ -70,7 +66,7 @@ class RouterRegistrar extends BaseRegistrar
         string $method,
         array $controller_annotations,
         array $method_annotations
-    ): void
+    )
     {
         if ($controller_annotations[static::scope()]) {
             $route_callback = [

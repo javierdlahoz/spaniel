@@ -114,7 +114,7 @@ abstract class BaseField
      */
     public function setId(string $id): BaseField
     {
-        if (!$this->name) {
+        if (!isset($this->name)) {
             $this->name = $id;
         }
 

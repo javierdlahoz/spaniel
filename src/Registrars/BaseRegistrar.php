@@ -65,7 +65,8 @@ abstract class BaseRegistrar implements RegistrarInterface
      */
     public static function getCallback(\ReflectionClass $class, \ReflectionMethod $method): array
     {
-        return [$class->getName()::getInstance(), $method->getName()];
+        $class_name = $class->getName();
+        return [(new $class_name()), $method->getName()];
     }
 
 }
