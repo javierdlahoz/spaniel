@@ -5,7 +5,7 @@ namespace Jdlabs\Spaniel\Registrars;
 use HaydenPierce\ClassFinder\ClassFinder;
 use zpt\anno\Annotations;
 
-abstract class BaseRegistrar
+abstract class BaseRegistrar implements RegistrarInterface
 {
 
     abstract public static function scope(): string;
@@ -18,7 +18,7 @@ abstract class BaseRegistrar
         array $class_annotations,
         array $method_annotations);
 
-    public function register(string $root_namespace)
+    public function register(string $root_namespace = null)
     {
         foreach (static::getClassesInNamespace($root_namespace) as $controller) {
             static::registerClassPurpose($controller);

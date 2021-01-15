@@ -15,7 +15,6 @@ use Jdlabs\Spaniel\Utils\Config;
 abstract class BasePlugin
 {
     use InteractsWithPartials,
-        InteractsWithPages,
         InteractsWithBlocks,
         InteractsWithPluginFiles,
         InteractsWithRegistrars;
@@ -55,8 +54,7 @@ abstract class BasePlugin
         add_action('init', [$this, 'registerFilters']);
         add_action('init', [$this, 'registerActions']);
         add_action('init', [$this, 'registerShortcodes']);
-
-        $this->addPages();
+        add_action('init', [$this, 'registerPages']);
 
         add_action('block_lab_add_blocks', [$this, 'registerBlocks']);
     }
@@ -111,8 +109,8 @@ abstract class BasePlugin
      */
     public function bootstrap()
     {
-        add_action('admin_enqueue_scripts', [__CLASS__, 'bootstrapAdmin'], 20, 1);
-        add_action('wp_enqueue_scripts', [__CLASS__, 'bootstrapComponents']);
+        add_action('admin_enqueue_scripts', [get_called_class(), 'bootstrapAdmin'], 20, 1);
+        add_action('wp_enqueue_scripts', [get_called_class(), 'bootstrapComponents']);
     }
 
     /**

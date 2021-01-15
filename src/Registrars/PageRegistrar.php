@@ -1,12 +1,12 @@
 <?php
 
-namespace Jdlabs\Spaniel\Traits;
+namespace Jdlabs\Spaniel\Registrars;
 
 use Jdlabs\Spaniel\Utils\Config;
 
-trait InteractsWithPages
+class PageRegistrar implements RegistrarInterface
 {
-    public function addPages()
+    public function register(string $root_namespace = null)
     {
         $pages = Config::get('pages');
         foreach ($pages as $page) {

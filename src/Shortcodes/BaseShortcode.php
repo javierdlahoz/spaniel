@@ -16,10 +16,10 @@ abstract class BaseShortcode extends Singleton
     }
 
     /**
-     * @param string $code
+     * @param string $tag
      * @param array $args
      */
-    public static function doShortCode(string $code, array $args = []): void
+    public static function doShortCode(string $tag, array $args = []): void
     {
         try {
             $string_args = '';
@@ -30,7 +30,7 @@ abstract class BaseShortcode extends Singleton
                 }
             }
 
-            echo do_shortcode("[{$code} {$string_args}]");
+            echo do_shortcode("[{$tag} {$string_args}]");
         } catch (\Exception $ex) {
             // TODO: nothing here
         }
