@@ -2,12 +2,9 @@
 
 namespace Jdlabs\Spaniel\Shortcodes;
 
-/**
- * Class BaseShortcode
- *
- * @package \Jdlabs\Spaniel\Shortcodes
- */
-abstract class BaseShortcode
+use Jdlabs\Spaniel\Utils\Singleton;
+
+abstract class BaseShortcode extends Singleton
 {
     /**
      * @param $attrs
