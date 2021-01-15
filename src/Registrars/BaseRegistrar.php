@@ -3,14 +3,8 @@
 namespace Jdlabs\Spaniel\Registrars;
 
 use HaydenPierce\ClassFinder\ClassFinder;
-use Jdlabs\Spaniel\Utils\Config;
 use zpt\anno\Annotations;
 
-/**
- * Class BaseRegisterer
- *
- * @package \Jdlabs\Spaniel\Registrars
- */
 abstract class BaseRegistrar
 {
 

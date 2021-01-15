@@ -86,4 +86,3 @@ class RouterRegistrar extends BaseRegistrar
         }
     }
 }
-}

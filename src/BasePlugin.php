@@ -10,6 +10,7 @@ use Jdlabs\Spaniel\Traits\InteractsWithPluginFiles;
 use Jdlabs\Spaniel\Traits\InteractsWithRoles;
 use Jdlabs\Spaniel\Traits\InteractsWithShortcodes;
 use Jdlabs\Spaniel\Traits\InteractsWithRegistrars;
+use Jdlabs\Spaniel\Utils\Config;
 
 abstract class BasePlugin
 {

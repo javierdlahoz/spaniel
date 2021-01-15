@@ -16,6 +16,7 @@ class Config
      */
     public static function get(string $filename): array
     {
+//        dd(self::pluginConfigDir() . $filename);
         return include self::pluginConfigDir() . $filename . '.php';
     }
 

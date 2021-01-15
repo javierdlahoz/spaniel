@@ -11,7 +11,7 @@ trait InteractsWithPluginFiles
     public static function pluginDirBase(): string
     {
         // TODO: Find a better way to achieve this
-        return __DIR__ . '../../../';
+        return __DIR__ . '../../../../../';
     }
 
     /**
@@ -44,6 +44,6 @@ trait InteractsWithPluginFiles
      */
     public static function pluginConfigDir()
     {
-        return self::pluginDirBase() . '/../config/';
+        return self::pluginDirBase() . '../config/';
     }
 }

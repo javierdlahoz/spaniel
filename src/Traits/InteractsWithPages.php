@@ -1,10 +1,8 @@
 <?php
 
-
 namespace Jdlabs\Spaniel\Traits;
 
-
-use Betsbrothers\Integration\Utils\Config;
+use Jdlabs\Spaniel\Utils\Config;
 
 trait InteractsWithPages
 {
