@@ -12,12 +12,37 @@ class Config
 
     /**
      * @param string $filename
-     * @return array
+     * @return mixed
      */
-    public static function get(string $filename): array
+    protected static function getConfigFileParams(string $filename): array
     {
-//        dd(self::pluginConfigDir() . $filename);
-        return include self::pluginConfigDir() . $filename . '.php';
+        $file_path = self::pluginConfigDir() . $filename . '.php';
+        if (!file_exists($file_path)) {
+            return [];
+        }
+
+        return include $file_path;
+    }
+
+    /**
+     * @param string $config
+     * @return array|mixed|null
+     */
+    public static function get(string $config)
+    {
+        $paths = explode('.', $config);
+        $filename = array_shift($paths);
+
+        $file_configs = self::getConfigFileParams($filename);
+        foreach ($paths as $path) {
+            if (!$file_configs[$path]) {
+                return null;
+            }
+
+            $file_configs = $file_configs[$path];
+        }
+
+        return $file_configs;
     }
 
     /**

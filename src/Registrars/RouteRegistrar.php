@@ -75,7 +75,7 @@ class RouteRegistrar extends BaseRegistrar
             ];
 
             register_rest_route(
-                Config::get('plugin')['routes_prefix'],
+                Config::get('plugin.routes_prefix'),
                 "{$controller_annotations['route']}/{$method_annotations['route']}",
                 $route_callback
             );

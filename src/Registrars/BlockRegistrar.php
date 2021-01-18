@@ -14,8 +14,8 @@ class BlockRegistrar implements RegistrarInterface
 
     public function getBlockTemplatesPath(): string
     {
-        $plugin_config = Config::get('plugin');
-        return ABSPATH . 'wp-content/plugins/' . $plugin_config['plugin_dir'] . '/partials';
+        $plugin_dir = Config::get('plugin.plugin_dir');
+        return ABSPATH . "wp-content/plugins/{$plugin_dir}/partials";
     }
 
     public function register(string $root_namespace = null)

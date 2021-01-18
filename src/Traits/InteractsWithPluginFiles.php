@@ -11,7 +11,7 @@ trait InteractsWithPluginFiles
     public static function pluginDirBase(): string
     {
         // TODO: Find a better way to achieve this
-        return __DIR__ . '../../../../../';
+        return __DIR__ . '/../../../../';
     }
 
     /**

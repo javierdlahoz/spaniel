@@ -12,7 +12,7 @@ class Cache
      */
     public static function config(): array
     {
-        return Config::get('plugin')['cache'];
+        return Config::get('plugin.cache');
     }
 
     /**
