@@ -22,7 +22,7 @@ class ShortcodeRegistrar extends BaseRegistrar
         array $method_annotations
     )
     {
-        if ($method_annotations['tag']) {
+        if (isset($method_annotations['tag'])) {
             add_shortcode(
                 $method_annotations['tag'],
                 static::getCallback($class, $method)

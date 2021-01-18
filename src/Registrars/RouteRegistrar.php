@@ -45,7 +45,7 @@ class RouteRegistrar extends BaseRegistrar
         array $method_annotations
     )
     {
-        if (count($method_annotations) && $method_annotations['route']) {
+        if (count($method_annotations) && isset($method_annotations['route'])) {
             static::registerMethodRoute(
                 $class->getName(),
                 $method->getName(),

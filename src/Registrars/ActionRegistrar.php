@@ -25,7 +25,7 @@ class ActionRegistrar extends BaseRegistrar
         array $method_annotations
     )
     {
-        if ($method_annotations['hook']) {
+        if (isset($method_annotations['hook'])) {
             add_action(
                 $method_annotations['hook'],
                 static::getCallback($class, $method),

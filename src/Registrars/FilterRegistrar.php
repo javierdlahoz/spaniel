@@ -24,7 +24,7 @@ class FilterRegistrar extends BaseRegistrar
         array $method_annotations
     )
     {
-        if ($method_annotations['hook']) {
+        if (isset($method_annotations['hook'])) {
             add_filter(
                 $method_annotations['hook'],
                 static::getCallback($class, $method),

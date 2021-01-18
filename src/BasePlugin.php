@@ -114,7 +114,7 @@ abstract class BasePlugin
      */
     public function bootstrap()
     {
-        add_action('admin_enqueue_scripts', [get_called_class(), 'bootstrapAdmin'], 20, 1);
-        add_action('wp_enqueue_scripts', [get_called_class(), 'bootstrapComponents']);
+        add_action('admin_enqueue_scripts', [$this, 'bootstrapAdmin'], 20, 1);
+        add_action('wp_enqueue_scripts', [$this, 'bootstrapComponents']);
     }
 }
