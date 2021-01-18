@@ -44,10 +44,15 @@ abstract class BasePlugin
      */
     abstract public function bootstrapAdmin();
 
-    /**
-     * Plugin constructor.
-     */
     public function __construct()
+    {
+        $this->activate();
+    }
+
+    /**
+     * Only runs when activates the plugin or in development mode
+     */
+    public function activate()
     {
         $this->bootstrap();
         add_action('init', [$this, 'registerRoutes']);

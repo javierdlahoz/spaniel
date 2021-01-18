@@ -26,9 +26,10 @@ class Config
 
     /**
      * @param string $config
+     * @param null $default
      * @return array|mixed|null
      */
-    public static function get(string $config)
+    public static function get(string $config, $default = null)
     {
         $paths = explode('.', $config);
         $filename = array_shift($paths);
@@ -36,7 +37,7 @@ class Config
         $file_configs = self::getConfigFileParams($filename);
         foreach ($paths as $path) {
             if (!$file_configs[$path]) {
-                return null;
+                return $default;
             }
 
             $file_configs = $file_configs[$path];
